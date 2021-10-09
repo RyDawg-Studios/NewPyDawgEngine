@@ -5,17 +5,12 @@ from engine.sprites.sprite_manager_manager import Sprite_Manager_Manager
 from engine.objects.object_manager import Object_Manager
 from engine.player.player_controller import Player_Controller
 from engine.mouse.mouse_manager import Mouse_Manager
-
 from config.config import Settings_Manager
-
-
-
 from engine.levels.level_manager import Level_Manager
 from engine.levels.debug.test_level import DemoLevel
-
 import pygame
 
-class Game():
+class Game:
     def __init__(self, path):
         print("Game Manager Initialized")
 
@@ -51,6 +46,7 @@ class Game():
     def game_loop(self):
         self.manage_managers()
         self.clock.tick(60)
+        pygame.display.set_caption(str(self.level_manager.current_level.test_button.button_state))
 
 
 

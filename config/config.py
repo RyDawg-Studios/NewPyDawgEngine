@@ -1,8 +1,8 @@
 import pygame
 
-class Settings_Manager():
-    def __init__(self, game):
 
+class Settings_Manager:
+    def __init__(self, game):
         self.game = game
 
         self.up_key = pygame.K_UP
@@ -15,3 +15,5 @@ class Settings_Manager():
     def update(self):
         pass
 
+
+settings = {"Dimensions": (500, 400)}

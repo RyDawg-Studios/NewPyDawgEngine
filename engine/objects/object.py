@@ -37,7 +37,7 @@ class Object():
             self.overlap_info["Overlapping"] = False
 
 
-        pygame.display.set_caption(str(self.overlap_info))
+        #pygame.display.set_caption(str(self.overlap_info))
 
     def ovr_on_overlap(self):
         pass

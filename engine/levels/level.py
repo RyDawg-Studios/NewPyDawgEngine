@@ -1,7 +1,7 @@
 class Level():
     def __init__(self, game):
         print("Level Initialized")
-        self.objects = []
+        self.components = []
         self.game = game
 
 
@@ -12,15 +12,15 @@ class Level():
         pass
 
     def unload(self):
-        self.objects = []
+        self.components = []
 
     def update(self):
-        for object in self.objects:
+        for object in self.components:
             object.update()
 
     def add_object(self, object):
         new_obj = self.game.object_manager.spawn_object(object)
-        self.objects.append(new_obj)
+        self.components.append(new_obj)
         return new_obj
 
 
