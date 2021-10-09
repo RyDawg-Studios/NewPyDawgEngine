@@ -4,9 +4,15 @@ from engine.events.input.input_manager import InputManager
 from engine.sprites.sprite_manager_manager import Sprite_Manager_Manager
 from engine.objects.object_manager import Object_Manager
 from engine.player.player_controller import Player_Controller
+from engine.mouse.mouse_manager import Mouse_Manager
+
 from config.config import Settings_Manager
+
+
+
 from engine.levels.level_manager import Level_Manager
 from engine.levels.debug.test_level import DemoLevel
+
 import pygame
 
 class Game():
@@ -26,6 +32,7 @@ class Game():
         self.object_manager = Object_Manager(self)
         self.settings = Settings_Manager(self)
         self.level_manager = Level_Manager(self)
+        self.mouse_manager = Mouse_Manager(self)
 
 
         self.pregameloop()
@@ -53,6 +60,7 @@ class Game():
         self.sprite_manager_manager.update()
         self.player_manager.update()
         self.level_manager.update()
+        self.mouse_manager.update()
 
         self.display_manager.update() #This ALWAYS Goes Last in this Function
 
