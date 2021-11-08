@@ -9,12 +9,9 @@ class Level_Manager():
         self.current_level.load()
 
     def load_level(self, level):
-        if self.current_level != None:
-            level.load(self.game)
-
-        else:
-            self.current_level.unload()
-            self.current_level = level
+        self.current_level.unload()
+        self.current_level = level
+        self.current_level.init()
 
     def update(self):
         self.current_level.update()

@@ -5,9 +5,11 @@ class Object():
     def __init__(self, game, args):
         self.game = game
         self.objectname = args[1]
+        self.spritepath = ''
         self.sprite_manager = Sprite_Manager(game, self, args[2], args[3], args[4])
         self.rect = self.sprite_manager.rect
-        self.rect.center = self.sprite_manager.rect.center
+        if self.rect != None:
+            self.rect.center = self.sprite_manager.rect.center
         self.checkForCollision = False
         self.solid = True
         self.generateOverlapEvents = True

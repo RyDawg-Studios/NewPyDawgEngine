@@ -8,6 +8,7 @@ from engine.mouse.mouse_manager import Mouse_Manager
 from config.config import Settings_Manager
 from engine.levels.level_manager import Level_Manager
 from engine.levels.debug.test_level import DemoLevel
+from engine.levels.debug.stresstest_level import StressLevel
 import pygame
 
 class Game:
@@ -46,7 +47,6 @@ class Game:
     def game_loop(self):
         self.manage_managers()
         self.clock.tick(60)
-        pygame.display.set_caption(str(self.level_manager.current_level.test_button.button_state))
 
 
 
@@ -58,7 +58,7 @@ class Game:
         self.level_manager.update()
         self.mouse_manager.update()
 
-        self.display_manager.update() #This ALWAYS Goes Last in this Function
+        self.display_manager.update()  #This ALWAYS Goes Last in this Function
 
 
     def exitgame(self):
