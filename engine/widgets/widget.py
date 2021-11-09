@@ -20,8 +20,8 @@ class Widget(Level):
         raw = open(self.path, "r")
         self.data = json.load(raw)
         for wgc in self.data["Widget"]:
-            rawclass = eval(self.data["Widget"][wgc]["Class"],{"game": "self.game", "args": "Nuts"})
-
+            #rawclass = eval(self.data["Widget"][wgc]["Class"],{"game": "self.game", "args": ["Nuts"]})
+            pass
 
 
     def unload(self):

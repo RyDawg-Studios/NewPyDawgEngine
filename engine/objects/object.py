@@ -1,21 +1,23 @@
-import pygame
 from engine.sprites.sprite_manager import Sprite_Manager
 
 class Object():
+
+    sprite_path = ''
+    solid = False
+    generateOverlapEvents = True
+    checkForCollision = False
+    blueprint = None
     def __init__(self, game, args):
         self.game = game
+        self.ovr_init()
         self.objectname = args[1]
-        self.spritepath = ''
-        self.sprite_manager = Sprite_Manager(game, self, args[2], args[3], args[4])
+        self.sprite_manager = Sprite_Manager(game, self, self.sprite_path, args[2], args[3])
         self.rect = self.sprite_manager.rect
         if self.rect != None:
             self.rect.center = self.sprite_manager.rect.center
-        self.checkForCollision = False
-        self.solid = True
-        self.generateOverlapEvents = True
         self.overlap_info = {"Overlapping" : False, "Objects" : []}
 
-        self.ovr_init()
+
 
     def update(self):
         self.sprite_manager.custom_update()
@@ -31,8 +33,13 @@ class Object():
                     if object not in self.overlap_info["Objects"]:
                         self.overlap_info["Objects"].append(object)
                         object.ovr_on_overlap()
+
                 if not self.rect.colliderect(object.rect) and object in self.overlap_info['Objects']:
                     self.overlap_info["Objects"].remove(object)
+
+                if object in self.overlap_info["Objects"] and object not in self.game.object_manager.all_objects:
+                    self.overlap_info["Objects"].remove(object)
+
         if len(self.overlap_info["Objects"]) > 0:
             self.overlap_info["Overlapping"] = True
         else:
@@ -52,5 +59,12 @@ class Object():
         pass
 
     def debug(self):
-        print("Holy nutsack!")
+        print("I'm Real!")
+
+
+    def destroy(self):
+        for grp in self.game.sprite_manager_manager.groups:
+            if self.sprite_manager in grp:
+                grp.remove(self.sprite_manager)
+                return
 

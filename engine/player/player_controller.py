@@ -7,8 +7,8 @@ class Player_Controller():
         print("Player Controller Initialized")
         self.game = game
         self.player = player
-        self.widget_manager = Widget_Manager(self.game)
-        self.widget_manager.activate_widget(Widget(self.game, r'C:\Users\Administrator\Documents\GitHub\NewPyDawgEngine\engine\widgets\widgets\wg_test.json'))
+        #self.widget_manager = Widget_Manager(self.game)
+        #self.widget_manager.activate_widget(Widget(self.game, r'C:\Users\Administrator\Documents\GitHub\NewPyDawgEngine\engine\widgets\widgets\wg_test.json'))
 
 
     def update(self):

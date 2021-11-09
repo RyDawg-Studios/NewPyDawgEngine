@@ -3,12 +3,14 @@
     "DummyObject": {
       "Name": "Dummy",
       "Class": "Test_Object",
-      "Location": "[200, 250]"
+      "Rect": "(10, 10, 60, 60)",
+      "Layer": 2
     },
     "DummyObject2": {
       "Name": "Dummy2",
       "Class": "Test_Object",
-      "Location": "[100, 150]"
+      "Rect": "(410, 220, 60, 60)",
+      "Layer": 0
     }
   }
 }

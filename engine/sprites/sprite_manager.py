@@ -9,12 +9,10 @@ class Sprite_Manager(pygame.sprite.Sprite):
         self.owning_object = object
         self.group_index = surface_index
 
-
-        self.spritename = assetpath
-        self.spritepath = game.path + r'\assets' + assetpath
+        self.spritepath = assetpath
 
 
-        if self.spritename == 'none':
+        if self.spritepath == 'none':
             self.image = None
             self.rect = None
 

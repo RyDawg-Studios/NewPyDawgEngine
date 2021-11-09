@@ -18,18 +18,20 @@ class Blueprint():
 
     def spawn(self):
         """Spawn entire blueprint"""
-        for obj in self.data["Blueprint"]:
-            temp = eval(self.data["Blueprint"][obj]["Class"])
-            self.level.add_object(temp, "old")
+        for o in self.data["Blueprint"]:
+            cls = eval(self.data["Blueprint"][o]["Class"])
+            obj = [cls, self.data["Blueprint"][o]["Name"], eval(self.data["Blueprint"][o]["Rect"]), self.data["Blueprint"][o]["Layer"]]
+            obj = self.level.add_object(obj)
+            self.objects.append(obj)
 
 
     def despawn(self):
         """Unload entire blueprint"""
-        pass
-
-    def remove(self):
+        for o in self.objects:
+           self.level.remove_object(o)
+    def remove(self, obj):
         """Remove individual object from blueprint"""
-        pass
+        self.level.remove_object(obj)
 
     def load(self, association):
         raw = open(association, "r")

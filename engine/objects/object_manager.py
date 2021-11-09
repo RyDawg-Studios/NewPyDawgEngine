@@ -13,8 +13,13 @@ class Object_Manager():
             object.update()
 
 
-    def spawn_object(self, args):  #[ObjClass, Name, Path, Rect, Surface_Index]
+    def spawn_object(self, args):  #[ObjClass, Name, Rect, Surface_Index]
         new_object = args[0](self.game, args)
         self.all_objects.append(new_object)
         return new_object
+
+    def remove_object(self, obj):
+        obj.destroy()
+        self.all_objects.remove(obj)
+
 
