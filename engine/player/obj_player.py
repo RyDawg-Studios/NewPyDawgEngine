@@ -7,6 +7,7 @@ class Player(Object):
         print("Player Spawned")
         self.max_player_speed = 3
         self.checkForCollision = True
+        self.spritepath = r'\img\icon\thedawg.jpg'
 
     def ovr_update(self):
         self.update_velocity()

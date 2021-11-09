@@ -18,8 +18,8 @@ class Level():
         self.components.clear()
 
     def update(self):
-        for object in self.components:
-            object.update()
+        for obj in self.components:
+            obj.update()
 
     def add_object(self, object, *args):
         if "old" not in args:
