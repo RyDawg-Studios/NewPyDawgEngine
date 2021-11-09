@@ -49,3 +49,6 @@ class Object():
     def ovr_init(self): #Overide
         pass
 
+    def debug(self):
+        print("Holy nutsack!")
+

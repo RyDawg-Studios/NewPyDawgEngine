@@ -4,6 +4,10 @@ class Button(Object):
 
     button_state = {"Hovered": False, "Pressed": False}
 
+    def __init__(self, game, *args):
+        if "Nuts" in args:
+            print("Nuts")
+
     def ovr_update(self):
         if self.rect.collidepoint(self.game.mouse_manager.pos[0], self.game.mouse_manager.pos[1]):
             if not self.button_state["Hovered"]:

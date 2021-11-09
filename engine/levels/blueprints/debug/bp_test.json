@@ -1,0 +1,14 @@
+{
+  "Blueprint": {
+    "DummyObject": {
+      "Name": "Dummy",
+      "Class": "Test_Object",
+      "Location": "[200, 250]"
+    },
+    "DummyObject2": {
+      "Name": "Dummy2",
+      "Class": "Test_Object",
+      "Location": "[100, 150]"
+    }
+  }
+}

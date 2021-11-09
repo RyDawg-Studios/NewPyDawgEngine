@@ -46,7 +46,6 @@ class Game:
     def game_loop(self):
         self.manage_managers()
         self.clock.tick(60)
-        pygame.display.set_caption(str(self.level_manager.current_level.test_button.button_state))
 
 
 

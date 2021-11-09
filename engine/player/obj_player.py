@@ -1,5 +1,7 @@
 from engine.objects.object import Object
 import pygame
+
+
 class Player(Object):
     def ovr_init(self):
         print("Player Spawned")
@@ -18,10 +20,3 @@ class Player(Object):
             self.rect.y -= self.max_player_speed
         if self.game.settings.down_key in self.game.input_manager.key_inputs:
             self.rect.y += self.max_player_speed
-
-
-
-
-
-
-
