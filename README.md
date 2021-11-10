@@ -1,2 +1,2 @@
-# PyDawgEngine-October-2021
- this is the real one I swear
+# PyDawgEngine
+Welcome to PyDawgEngine! A Pygame framework written for use of 2D games.
