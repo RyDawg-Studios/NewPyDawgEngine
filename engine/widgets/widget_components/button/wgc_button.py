@@ -1,11 +1,16 @@
 from engine.objects.object import Object
+import pygame
 
 class Button(Object):
 
-    button_state = {"Hovered": False, "Pressed": False}
+    def ovr_init(self):
+        self.button_state = {"Hovered": False, "Pressed": False}
 
 
     def ovr_update(self):
+
+        pygame.display.set_caption(str(self.button_state))
+
         if self.rect.collidepoint(self.game.mouse_manager.pos[0], self.game.mouse_manager.pos[1]):
             if not self.button_state["Hovered"]:
                 self.ovr_hover()

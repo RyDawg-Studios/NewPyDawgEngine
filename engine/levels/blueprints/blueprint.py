@@ -20,9 +20,11 @@ class Blueprint():
         """Spawn entire blueprint"""
         for o in self.data["Blueprint"]:
             cls = eval(self.data["Blueprint"][o]["Class"])
-            obj = [cls, self.data["Blueprint"][o]["Name"], eval(self.data["Blueprint"][o]["Rect"]), self.data["Blueprint"][o]["Layer"]]
-            obj = self.level.add_object(obj)
-            self.objects.append(obj)
+            obj = {"Class": cls,
+                   "Name": self.data["Blueprint"][o]["Name"],
+                   "Rect": eval(self.data["Blueprint"][o]["Rect"]),
+                   "Surf": self.data["Blueprint"][o]["Layer"]}
+            self.level.add_object(object=obj)
 
 
     def despawn(self):

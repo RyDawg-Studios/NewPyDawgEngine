@@ -13,8 +13,8 @@ class Object_Manager():
             object.update()
 
 
-    def spawn_object(self, args):  #[ObjClass, Name, Rect, Surface_Index]
-        new_object = args[0](self.game, args)
+    def spawn_object(self, object, args):  #[ObjClass, Name, Rect, Surface_Index]
+        new_object = object["Class"](self.game, struct=object, args=args)
         self.all_objects.append(new_object)
         return new_object
 

@@ -1,10 +1,11 @@
 {
   "Widget": {
     "TestButton": {
-      "ID": "TestButton",
-      "Class": "Button",
-      "Rect": "[200, 300, 80, 80]",
-      "Sprite": "r'C:\\Users\\Administrator\\Documents\\GitHub\\NewPyDawgEngine\\assets\\img\\debug\\test_button.png'"
+      "Name": "TestButton",
+      "Class": "TestButton",
+      "Rect": "(200, 300, 80, 80)",
+      "Path": "r'.\\assets\\img\\debug\\test_button.png'",
+      "Surf": 0
     }
   }
 }

@@ -8,7 +8,6 @@ class Sprite_Manager(pygame.sprite.Sprite):
         self.game = game
         self.owning_object = object
         self.group_index = surface_index
-
         self.spritepath = assetpath
 
 

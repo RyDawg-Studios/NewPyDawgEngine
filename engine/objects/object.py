@@ -3,18 +3,24 @@ import pygame
 
 class Object():
 
-    sprite_path = ''
+    sprite_path = r''
     solid = False
     generateOverlapEvents = True
     checkForCollision = False
     blueprint = None
-    def __init__(self, game, args):
+    def __init__(self, game, struct, args):
+
+
         self.game = game
         self.ovr_init()
-        self.objectname = args[1]
-        self.sprite_manager = Sprite_Manager(game, self, self.sprite_path, args[2], args[3])
+
+        if "Path" in args.keys():
+            self.sprite_path = args["Path"]
+
+        self.objectname = struct["Name"]
+        self.sprite_manager = Sprite_Manager(game, self, self.sprite_path, struct["Rect"], struct["Surf"])
         self.rect = self.sprite_manager.rect
-        if self.rect != None:
+        if self.rect is not None:
             self.rect.center = self.sprite_manager.rect.center
         self.overlap_info = {"Overlapping" : False, "Objects" : []}
 
@@ -30,9 +36,6 @@ class Object():
     def check_overlap(self):
         if self.checkForCollision == True:
             for object in self.game.object_manager.all_objects:
-                if object in self.overlap_info["Objects"] and object not in self.game.object_manager.all_objects:
-                    self.overlap_info["Objects"].remove(object)
-
                 if self.rect.colliderect(object.rect) and object != self:
                     if object not in self.overlap_info["Objects"]:
                         self.overlap_info["Objects"].append(object)
@@ -41,16 +44,16 @@ class Object():
                 if not self.rect.colliderect(object.rect) and object in self.overlap_info['Objects']:
                     self.overlap_info["Objects"].remove(object)
 
-
-
+        for object in self.overlap_info["Objects"]:
+            if object not in self.game.object_manager.all_objects:
+                self.overlap_info["Objects"].remove(object)
+                pass
 
         if len(self.overlap_info["Objects"]) > 0:
             self.overlap_info["Overlapping"] = True
         else:
             self.overlap_info["Overlapping"] = False
 
-
-        pygame.display.set_caption(str(self.overlap_info))
 
     def ovr_on_overlap(self):
         pass
