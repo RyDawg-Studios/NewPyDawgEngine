@@ -46,7 +46,6 @@ class Game:
 
     def game_loop(self):
         self.manage_managers()
-        pygame.display.set_caption(str(self.player_manager.player.overlap_info))
         self.clock.tick(60)
 
 

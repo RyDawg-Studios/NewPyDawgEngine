@@ -1,4 +1,5 @@
 from engine.sprites.sprite_manager import Sprite_Manager
+import pygame
 
 class Object():
 
@@ -29,6 +30,9 @@ class Object():
     def check_overlap(self):
         if self.checkForCollision == True:
             for object in self.game.object_manager.all_objects:
+                if object in self.overlap_info["Objects"] and object not in self.game.object_manager.all_objects:
+                    self.overlap_info["Objects"].remove(object)
+
                 if self.rect.colliderect(object.rect) and object != self:
                     if object not in self.overlap_info["Objects"]:
                         self.overlap_info["Objects"].append(object)
@@ -37,8 +41,8 @@ class Object():
                 if not self.rect.colliderect(object.rect) and object in self.overlap_info['Objects']:
                     self.overlap_info["Objects"].remove(object)
 
-                if object in self.overlap_info["Objects"] and object not in self.game.object_manager.all_objects:
-                    self.overlap_info["Objects"].remove(object)
+
+
 
         if len(self.overlap_info["Objects"]) > 0:
             self.overlap_info["Overlapping"] = True
@@ -46,7 +50,7 @@ class Object():
             self.overlap_info["Overlapping"] = False
 
 
-        #pygame.display.set_caption(str(self.overlap_info))
+        pygame.display.set_caption(str(self.overlap_info))
 
     def ovr_on_overlap(self):
         pass
