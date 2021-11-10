@@ -6,7 +6,7 @@ class Level():
         self.components = []
         self.game = game
         self.rapid = Blueprint(self, r".\engine\levels\blueprints\debug\bp_test.json")  #Rapid is a levels empty default blueprint, that is updated during gameplay
-
+        self.blueprints = [self.rapid]
 
     def init(self):
         self.load()
@@ -29,5 +29,7 @@ class Level():
     def remove_object(self, object):
         self.components.remove(object)
         self.game.object_manager.remove_object(object)
-
+        for bp in self.blueprints:
+            if object in bp.objects:
+                bp.remove(object)
 

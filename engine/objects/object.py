@@ -38,8 +38,9 @@ class Object():
             for object in self.game.object_manager.all_objects:
                 if self.rect.colliderect(object.rect) and object != self:
                     if object not in self.overlap_info["Objects"]:
-                        self.overlap_info["Objects"].append(object)
-                        object.ovr_on_overlap()
+                        if object.generateOverlapEvents:
+                            self.overlap_info["Objects"].append(object)
+                            object.ovr_on_overlap()
 
                 if not self.rect.colliderect(object.rect) and object in self.overlap_info['Objects']:
                     self.overlap_info["Objects"].remove(object)
@@ -53,6 +54,9 @@ class Object():
             self.overlap_info["Overlapping"] = True
         else:
             self.overlap_info["Overlapping"] = False
+
+        if self.objectname == "Player":
+            pygame.display.set_caption(str(self.overlap_info))
 
 
     def ovr_on_overlap(self):

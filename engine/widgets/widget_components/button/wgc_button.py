@@ -5,6 +5,7 @@ class Button(Object):
 
     def ovr_init(self):
         self.button_state = {"Hovered": False, "Pressed": False}
+        self.generateOverlapEvents = False
 
 
     def ovr_update(self):

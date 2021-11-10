@@ -5,7 +5,7 @@
       "Class": "TestButton",
       "Rect": "(200, 300, 80, 80)",
       "Path": "r'.\\assets\\img\\debug\\test_button.png'",
-      "Surf": 0
+      "Surf": 4
     }
   }
 }
