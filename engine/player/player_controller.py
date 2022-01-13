@@ -1,15 +1,25 @@
-from engine.widgets.widget_manager import Widget_Manager
-from engine.widgets.widget import Widget
+import pygame
+from engine.component.component import Component
 
-
-class Player_Controller():
-    def __init__(self, game, player):
-        print("Player Controller Initialized")
-        self.game = game
-        self.player = player
-        self.widget_manager = Widget_Manager(self.game)
-        self.widget_manager.activate_widget(Widget(self.game, r'C:\Users\Administrator\Documents\GitHub\NewPyDawgEngine\engine\widgets\widgets\wg_test.json'))
-
-
+class PlayerController(Component):
+    def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
+        self.inpman = self.owner.pde.input_manager
+        self.max_player_speed = 2
+        
+        
     def update(self):
-        self.player.update()
+        self.update_velocity()
+        return super().update()
+
+
+
+    def update_velocity(self):
+        if pygame.K_d in self.owner.pde.input_manager.key_inputs:
+            self.owner.rect.x += self.max_player_speed
+        if pygame.K_a in self.owner.pde.input_manager.key_inputs:
+            self.owner.rect.x -= self.max_player_speed
+        if pygame.K_w in self.owner.pde.input_manager.key_inputs:
+            self.owner.rect.y -= self.max_player_speed
+        if pygame.K_s in self.owner.pde.input_manager.key_inputs:
+            self.owner.rect.y += self.max_player_speed

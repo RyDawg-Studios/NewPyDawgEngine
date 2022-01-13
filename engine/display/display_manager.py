@@ -1,34 +1,40 @@
 import pygame
-from config import config
+import json
+
 
 class DisplayManager:
-    def __init__(self, game):
-        print("Display Manager Initialized")
-        self.game = game
-        self.bg_surf_bottom = pygame.display.set_mode((config.settings["Dimensions"]))
-        self.bg_surf_top = pygame.display.set_mode((config.settings["Dimensions"]))
-        self.bottom_surf = pygame.display.set_mode((config.settings["Dimensions"]))
-        self.mid_surf = pygame.display.set_mode((config.settings["Dimensions"]))
-        self.top_surf = pygame.display.set_mode((config.settings["Dimensions"]))
-        self.wg_surf_bottom = pygame.display.set_mode((config.settings["Dimensions"]))
-        self.wg_surf_top = pygame.display.set_mode((config.settings["Dimensions"]))
+    def __init__(self, pde) -> None:
+        self.pde = pde
+        self.surfs = {}
+        self.groups = {}
 
+        file = open(r".\engine\cfg\engineconfig.json")
+        self.cfg = json.load(file)
 
-        self.surfs = [self.bottom_surf,
-                      self.mid_surf,
-                      self.top_surf,
-                      self.bg_surf_bottom,
-                      self.bg_surf_top,
-                      self.wg_surf_bottom,
-                      self.wg_surf_top]
-
-        pygame.display.set_caption("PyDawgEngine")
+        self.configurewindow()
 
 
     def update(self):
         pygame.display.update()
-        for surface in self.surfs:
-            surface.fill((0, 0, 0))
+        for group in sorted(self.groups.keys()):
+            self.surfs[group].fill((0, 0, 0))
+            self.groups[group].update()
+            self.groups[group].draw(self.surfs[group])
+
+
+
+    def configurewindow(self):
+
+        cap = self.cfg["config"]["caption"]
+        pygame.display.set_caption(cap)
+
+        self.createsurf(id=0)
+
+    def createsurf(self, id=None):
+        dims = eval(self.cfg["config"]["dimensions"])
+        self.surfs[id] = pygame.display.set_mode(dims)
+        self.groups[id] = pygame.sprite.Group()
+
 
 
 
