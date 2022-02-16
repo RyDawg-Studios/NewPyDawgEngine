@@ -1,0 +1,11 @@
+import pygame
+from engine.object.object import Object
+from engine.actor.actor import Actor
+from engine.component.component import Component
+
+class ActorName(Actor):
+    def __init__(self, man, pde): #Put default values as arguments
+        #Define those arguments here
+
+        super().__init__(man, pde)
+        #Define components here

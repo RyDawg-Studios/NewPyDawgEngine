@@ -1,6 +1,7 @@
-import pygame
-from content.game import Game
-import os
+import pygame 
+from engine.PyDawgEngine import PyDawgEngine
 
 pygame.init()
-masterGame = Game(path=os.path.dirname(__file__))
+pygame.font.init()
+engine = PyDawgEngine()
+
